@@ -1,6 +1,9 @@
 import { Photo } from './types';
 import style from './index.module.scss';
 import { useState } from 'react';
+import { MainPhoto } from './MainPhoto';
+import { PreviewGallery } from './PreviewGallery';
+import { Navigation } from './Navigation';
 
 interface GalleryProps {
   photos: Photo[];
@@ -21,7 +24,7 @@ export const Gallery: React.FC<GalleryProps> = ({ photos }) => {
       <div className={style.galleryContainer}>
         <MainPhoto
           prevPhoto={prevPhoto}
-          currPhoto={activePhoto}
+          activePhoto={activePhoto}
           nextPhoto={nextPhoto}
           className={style.galleryMainPhoto}
         />
