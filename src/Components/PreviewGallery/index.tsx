@@ -1,4 +1,7 @@
 import { Photo, CommonClassProps } from '../types';
+import cl from 'classnames';
+
+import style from './index.module.scss';
 
 interface PreviewGalleryProps extends CommonClassProps {
   activePhotoIndex: number;
@@ -8,4 +11,22 @@ interface PreviewGalleryProps extends CommonClassProps {
 export const PreviewGallery: React.FC<PreviewGalleryProps> = ({
   activePhotoIndex,
   photos,
-}) => <div>Preview Galley</div>;
+  className,
+}) => (
+  <div className={cl(style.previewGallery, className)}>
+    <ul className={style.previewGalleryTrack}>
+      {photos.map(photo => (
+        <li key={photo.id} className={style.previewGalleryPreview}>
+          <img
+            src={photo.preview}
+            alt={photo.alt}
+            className={style.previewGalleryImage}
+          />
+        </li>
+      ))}
+    </ul>
+    <div className={style.previewGalleryCover}>
+      {activePhotoIndex + 1} / {photos.length}
+    </div>
+  </div>
+);
