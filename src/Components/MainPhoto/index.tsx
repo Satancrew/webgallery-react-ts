@@ -14,26 +14,29 @@ export const MainPhoto: React.FC<MainPhotoProps> = ({
   activePhoto,
   nextPhoto,
   className,
-}) => (
-  <div className={cl(className, style.transitionPhoto)}>
-    {prevPhoto && (
+}) => {
+  return (
+    <div className={cl(className, style.transitionPhoto)}>
+      {prevPhoto && (
+        <img
+          className={style.transitionPhotoImagePrev}
+          src={prevPhoto.src}
+          alt={prevPhoto.alt}
+        />
+      )}
       <img
-        className={style.transitionPhotoImagePrev}
-        src={prevPhoto.src}
-        alt={prevPhoto.alt}
+        className={style.transitionPhotoImage}
+        src={activePhoto.src}
+        alt={activePhoto.alt}
+        onClick={() => console.log('suka')}
       />
-    )}
-    <img
-      className={style.transitionPhotoImage}
-      src={activePhoto.src}
-      alt={activePhoto.alt}
-    />
-    {nextPhoto && (
-      <img
-        className={style.transitionPhotoImageNext}
-        src={nextPhoto.src}
-        alt={nextPhoto.alt}
-      />
-    )}
-  </div>
-);
+      {nextPhoto && (
+        <img
+          className={style.transitionPhotoImageNext}
+          src={nextPhoto.src}
+          alt={nextPhoto.alt}
+        />
+      )}
+    </div>
+  );
+};
